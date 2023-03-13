@@ -3,95 +3,63 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Category;
-use App\Models\UserMessages;
+use App\Models\Categories;
+use App\Models\News;
+use Illuminate\Support\Facades\DB;
+use PhpParser\ErrorHandler\Collecting;
 
 class MyPlaceController extends Controller
+
+
 {
-    public array $currents = [
-            '/'=>'',
-            '/contact'=>'',
-            '/about'=>'',
-            '/category'=>'',
-            '/single'=>''
-        ];
 
-    public function messages()
+    public function setNews()
     {
-        $messages = UserMessages::all();
-        $url = $_SERVER['REQUEST_URI'];
-        foreach ($messages as $message)
-        {
-            dump($message->message);
-        }
-        dump($url);
-
+        return News::all();
     }
 
-    public function isCurrent()
-    {
-        $url = $_SERVER['REQUEST_URI'];
 
-        foreach ($this->currents as $key => $current){
-
-           if($key == $url)
-           {
-               $this->currents[$key] = 'current';
-
-           }
-           else{
-               $this->currents[$key] = '';
-           }
-        }
-    }
     public function main()
     {
-        $this->isCurrent();
-        $categories = Category::all();
+
+       // $categories
+
+
+
         return view('index',
-            ['categories' => $categories,
-            'currents'=> $this->currents
-                ]);
+            [
+                'news'=>$this->setNews()
+            ]);
 
     }
 
     public function category()
     {
-        $this->isCurrent();
-        $categories = Category::all();
-        return view('category', ['categories' => $categories,
-            'currents'=> $this->currents
-        ]);
+
+        $categories = Categories::all();
+        return view('category',
+            [
+                'news'=>$this->setNews()
+            ]);
 
     }
 
     public function contact()
     {
-        $this->isCurrent();
-        $categories = Category::all();
-        return view("contact", ['categories' => $categories,
-            'currents'=> $this->currents
-        ]);
+
+        return view('contact',
+            [
+            ]);
 
     }
 
-    public function single()
-    {
-        $this->isCurrent();
-        $categories = Category::all();
-        return view("single-audio", ['categories' => $categories,
-            'currents'=> $this->currents
-        ]);
 
-    }
 
     public function about()
     {
-        $this->isCurrent();
-        $categories = Category::all();
-        return view('about', ['categories' => $categories,
-            'currents'=> $this->currents
-        ]);
+        return view('about',
+            [
+            ]);
 
     }
 

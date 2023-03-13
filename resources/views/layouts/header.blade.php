@@ -10,18 +10,18 @@
 
         <nav id="main-nav-wrap">
             <ul class="main-navigation sf-menu">
-                <li class="{{$currents['/']}}"><a href="{{route('main')}}" title="">Home</a></li>
-                <li class="has-children {{$currents['/category']}}">
+                <li class=" @if($routeName == 'main') current @endif "><a href="{{route('main')}}" title="">Home</a></li>
+                <li class="has-children @if($routeName == 'category') current @endif">
                     <a href="{{route('category')}}" title="">Categories</a>
                     <ul class="sub-menu">
-                        @foreach($categories as $category)
-                            <li><a href="{{route('category')}}">{{$category->name}}</a></li>
+                        @foreach($setCategories as $category)
+                            <li><a href="{{route('category')}}">{{$category->title}}</a></li>
                         @endforeach
 
                     </ul>
                 </li>
-                <li class="{{$currents['/about']}}"><a href="{{route('about')}}"  title="">About</a></li>
-                <li class="{{$currents['/contact']}}"><a href="{{route('contact')}}" title="">Contact</a></li>
+                <li class="@if($routeName == 'about') current @endif"><a href="{{route('about')}}"  title="">About</a></li>
+                <li class="@if($routeName == 'contact') current @endif"><a href="{{route('contact')}}" title="">Contact</a></li>
             </ul>
         </nav> <!-- end main-nav-wrap -->
 

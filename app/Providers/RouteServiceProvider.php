@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 
-class RouteServiceProvider extends ServiceProvider
+class  RouteServiceProvider extends ServiceProvider
 {
     /**
      * The path to the "home" route for your application.
@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\\Http\\Controllers';
-    public const HOME = '/home';
+    public const HOME = '/profile';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

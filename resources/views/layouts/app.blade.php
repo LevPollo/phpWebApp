@@ -1,156 +1,178 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
+
 <head>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Abstract</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-  ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link href="css/plugins.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-
-    <!-- script
-    ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-
-    <!-- favicons
-     ================================================== -->
-    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
-    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="INSPIRO"/>
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="image/png" href="{{asset("images/favicon.png")}}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="{{asset('css/plugins.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 
-<body id="top">
-<!-- header
-================================================== -->
+<body>
+<!-- Body Inner -->
+<div class="body-inner ">
+    <!-- Header -->
 
-@include('layouts.header')
-<!-- masonry
-================================================== -->
-@yield('section');
+    <header id="header" data-fullwidth="true">
+        <div class="header-inner  ">
+            <div class="container">
 
-<!-- footer
-================================================== -->
-<footer>
-
-    <div class="footer-main">
-
-        <div class="row">
-
-            <div class="col-four tab-full mob-full footer-info">
-
-                <h4>About Our Site</h4>
-
-                <p>
-                    Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.
-                </p>
-
-            </div> <!-- end footer-info -->
-
-            <div class="col-two tab-1-3 mob-1-2 site-links">
-
-                <h4>Site Links</h4>
-
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-
-            </div> <!-- end site-links -->
-
-            <div class="col-two tab-1-3 mob-1-2 social-links">
-
-                <h4>Social</h4>
-
-                <ul>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Dribbble</a></li>
-                    <li><a href="#">Google+</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-
-            </div> <!-- end social links -->
-
-            <div class="col-four tab-1-3 mob-full footer-subscribe">
-
-                <h4>Subscribe</h4>
-
-                <p>Keep yourself updated. Subscribe to our newsletter.</p>
-
-                <div class="subscribe-form">
-
-                    <form id="mc-form" class="group" novalidate="true">
-
-                        <input type="email" value="" name="dEmail" class="email" id="mc-email" placeholder="Type &amp; press enter" required="">
-
-                        <input type="submit" name="subscribe" >
-
-                        <label for="mc-email" class="subscribe-message"></label>
-
+                <!-- Search -->
+                <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
+                            class="icon-x"></i></a>
+                    <form class="search-form" action="search-results-page.html" method="get">
+                        <input class="form-control" name="q" type="text" placeholder="Type & Search..."/>
+                        <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>
                     </form>
-
                 </div>
-
-            </div> <!-- end subscribe -->
-
-        </div> <!-- end row -->
-
-    </div> <!-- end footer-main -->
-
-    <div class="footer-bottom">
-        <div class="row">
-
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>© Copyright Abstract 2016</span>
-                    <span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+                <!-- end: search -->
+                <!--Header Extras-->
+                <div class="header-extras ">
+                    <ul>
+                        <li>
+                            <a id="btn-search" href="#"> <i class="icon-search"></i></a>
+                        </li>
+                        <li>
+                            <div class="p-dropdown ">
+                                <a href="#"><i class="icon-globe"></i><span>EN</span></a>
+                                <ul class="p-dropdown-content">
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                <!--end: Header Extras-->
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger" class="">
+                    <a class="lines-button "><span class="lines bg-light"></span></a>
+                </div>
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <div id="mainMenu">
+                    <div class="container ">
+                        <nav>
+                            <ul>
+                                <li><a href="{{route('main')}}">Home</a></li>
 
-                <div id="go-top">
-                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+                                <li class="dropdown "><a>Pages</a>
+                                    <ul class="dropdown-menu ">
+                                        @foreach($setCategories as $category)
+
+                                            <li><a href="{{route('category',$category->id)}}">{{$category->title}}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
+                                <li><a href="{{route('about')}}">About</a></li>
+                                <li><a href="{{ route('login')}}">Login</a></li>
+                                {{--                                <li><a href="{{route('profile')}}">Profile</a></li>--}}
+                                {{--                                <li><a href="{{route('login')}}">Login</a></li>--}}
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--END: NAVIGATION-->
+            </div>
+        </div>
+    </header>
+    <!-- masonry
+    ================================================== -->
+    @yield('section')
+
+    <footer id="footer " class=" ">
+        <div class="footer-content ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="widget">
+                            <div class="widget-title">Polo HTML5 Template</div>
+                            <p class="mb-5">Built with love in Fort Worth, Texas, USA<br>
+                                All rights reserved. Copyright © 2019. INSPIRO.</p>
+                            <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923"
+                               class="btn btn-inverted" target="_blank">Purchase Now</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="widget">
+                                    <div class="widget-title">Discover</div>
+                                    <ul class="list">
+                                        <li><a href="#">Features</a></li>
+                                        <li><a href="#">Layouts</a></li>
+                                        <li><a href="#">Corporate</a></li>
+                                        <li><a href="#">Updates</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Customers</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget">
+                                    <div class="widget-title">Features</div>
+                                    <ul class="list">
+                                        <li><a href="#">Layouts</a></li>
+                                        <li><a href="#">Headers</a></li>
+                                        <li><a href="#">Widgets</a></li>
+                                        <li><a href="#">Footers</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget">
+                                    <div class="widget-title">Pages</div>
+                                    <ul class="list">
+                                        <li><a href="#">Portfolio</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Shop</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="widget">
+                                    <div class="widget-title">Support</div>
+                                    <ul class="list">
+                                        <li><a href="#">Help Desk</a></li>
+                                        <li><a href="#">Documentation</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div> <!-- end footer-bottom -->
-
-</footer>
-
-<div id="preloader">
-    <div id="loader"></div>
+        <div class="copyright-content">
+            <div class="container">
+                <div class="copyright-text text-center">&copy; 2019 POLO - Responsive Multi-Purpose HTML5 Template. All
+                    Rights Reserved.<a href="//www.inspiro-media.com" target="_blank" rel="noopener"> INSPIRO</a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- end: Footer -->
 </div>
-
-<!-- Java Script
-================================================== -->
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/main.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
+<!-- end: Body Inner -->
+<!-- Scroll top -->
+<a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+<!--Plugins-->
+<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
 <!--Template functions-->
-<script src="js/functions.js"></script>
+<script src="{{asset('js/functions.js')}}"></script>
 </body>
-
 
 </html>

@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nickname')->nullable();
+            $table->unsignedBigInteger('phone');
+            $table->string('email');
             $table->unsignedBigInteger('user_information_id')->nullable();
 
-            $table->foreign('user_information_id')
-                ->references('id')
-                ->on('user_information')
-                ->cascadeOnDelete();
+
         });
     }
 

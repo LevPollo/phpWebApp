@@ -1,77 +1,71 @@
 @extends('layouts.app')
 @section('section')
-    <section id="bricks">
 
-        <div class="row masonry">
+   <section id="page-content">
+        <div class="container">
+            <!-- post content -->
+            <!-- Page title -->
+            <div class="page-title">
 
-            <!-- brick-wrapper -->
-            <div class="bricks-wrapper">
+            </div>
 
-                <div class="grid-sizer"></div>
 
+            <!-- end: Page title -->
+            <!-- Blog -->
+            <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
+                <!-- Post item-->
 
                 @foreach($news as $post)
-                    <article class="brick entry format-standard animate-this">
 
-                        <div class="entry-thumb">
-                            <a href="layouts/single-standard.html" class="thumb-link">
-                                <img src="{{$post->image}}" alt="ferris wheel">
-                            </a>
-                        </div>
-
-                        <div class="entry-text">
-                            <div class="entry-header">
-
-                                <div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">
-                                @foreach($setCategories as $category)
-                                    @if($category->id == $post->category_id)
-                                        {{$category->title}}
-                                    @endif
-                                @endforeach
-                            </a>
-
-
-               			</span>
+                    @if($post->category_id == $categoryId && $categoryId != null )
+                        <div class="post-item border ">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img alt="" src="{{$post->image}}">
+                                    </a>
+                                    <span class="post-meta-category"><a href="">{{$post->category->title}}</a></span>
                                 </div>
 
-                                <h1 class="entry-title"><a href="layouts/single-standard.html">{{$post->title}}</a></h1>
+                                <div class="post-item-description">
+                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{$post->created_at}}</span>
+                                    <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                    <h2><a href="#"></a></h2>
+                                    <p> {{$post->text}}</p>
+                                    <div class="post-author"> <img src="{{asset($post->user->information->avatar)}}">
+                                        <p>by <a href="#">{{$post->user->nickname}}</a> 2 days ago </p>
 
-                            </div>
-                            <div class="entry-excerpt">
-                                {{$post->text}}
+                                    </div>
+                                    <br>
+                                    <div class="post-tags " >
+                                        @foreach($post->tags as $tag)
+                                            <a href="#"> {{$tag->name}} </a>
+                                        @endforeach
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                    </article> <!-- end article -->
+                    @endif
+
+
                 @endforeach
-
-
-                <!-- format audio here -->
-
-
-            </div> <!-- end brick-wrapper -->
-
-        </div> <!-- end row -->
-
-        <div class="row">
-
-            <nav class="pagination">
-                <span class="page-numbers prev inactive">Prev</span>
-                <span class="page-numbers current">1</span>
-                <a href="#" class="page-numbers">2</a>
-                <a href="#" class="page-numbers">3</a>
-                <a href="#" class="page-numbers">4</a>
-                <a href="#" class="page-numbers">5</a>
-                <a href="#" class="page-numbers">6</a>
-                <a href="#" class="page-numbers">7</a>
-                <a href="#" class="page-numbers">8</a>
-                <a href="#" class="page-numbers">9</a>
-                <a href="#" class="page-numbers next">Next</a>
-            </nav>
-
+                <!-- end: Post item-->
+            </div>
+            <!-- end: Blog -->
+            <!-- Pagination -->
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+            <!-- end: Pagination -->
         </div>
-
-    </section> <!-- end bricks -->
+        <!-- end: post content -->
+    </section> <!-- end: Content -->
 @endsection

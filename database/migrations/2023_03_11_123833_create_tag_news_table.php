@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('tag_news', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tags_id')->nullable();
+            $table->foreign('tags_id')->references('id')->on('tags');
             $table->unsignedBigInteger('news_id')->nullable();
+            $table->foreign('news_id')->references('id')->on('news');
             $table->timestamps();
         });
     }

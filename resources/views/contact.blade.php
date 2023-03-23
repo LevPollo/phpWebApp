@@ -1,80 +1,83 @@
 @extends('layouts/app')
+
 @section('section')
-    <section id="content-wrap" class="site-page">
-        <div class="row">
-            <div class="col-twelve">
 
-                <section>
-
-                    <div class="content-media">
-                        <div id="map-wrap">
-                            <div id="map-container"></div>
-                            <div id="map-zoom-in"></div>
-                            <div id="map-zoom-out"></div>
+    <section>
+        <div class="container text-dark">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="text-uppercase">Get In Touch</h3>
+                    <p>The most happiest time of the day!. Suspendisse condimentum porttitor cursus. Duis nec nulla
+                        turpis. Nulla lacinia laoreet odio, non lacinia nisl malesuada vel. Aenean malesuada
+                        fermentum bibendum.</p>
+                    <p>The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum
+                        gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie
+                        ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci.
+                        Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</p>
+                    <div class="row m-t-40">
+                        <div class="col-lg-6">
+                            <address>
+                                <strong>Polo, Inc.</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</h4> (123) 456-7890
+                            </address>
+                        </div>
+                        <div class="col-lg-6">
+                            <address>
+                                <strong>Polo Office</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</h4> (123) 456-7890
+                            </address>
                         </div>
                     </div>
-
-                    <div class="primary-content">
-
-                        <h1 class="entry-title add-bottom">Get In Touch With Us.</h1>
-
-                        <p class="lead">Lorem ipsum Deserunt est dolore Ut Excepteur nulla occaecat magna occaecat Excepteur nisi esse veniam dolor consectetur minim qui nisi esse deserunt commodo ea enim ullamco non voluptate consectetur minim aliquip Ut incididunt amet ut cupidatat.</p>
-
-                        <p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
-
+                    <div class="social-icons m-t-30 social-icons-colored">
+                        <ul>
+                            <li class="social-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="social-twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="social-google"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li class="social-pinterest"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li class="social-vimeo"><a href="#"><i class="fab fa-vimeo"></i></a></li>
+                            <li class="social-linkedin"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">
                         <div class="row">
-                            <div class="col-six tab-full">
-                                <h4>Where to Find Us</h4>
-
-                                <p>
-                                    1600 Amphitheatre Parkway<br>
-                                    Mountain View, CA<br>
-                                    94043 US
-                                </p>
-
+                            <div class="form-group col-md-6">
+                                <label for="name">Name</label>
+                                <input type="text" aria-required="true" name="widget-contact-form-name" required class="form-control required name" placeholder="Enter your Name">
                             </div>
-
-                            <div class="col-six tab-full">
-                                <h4>Contact Info</h4>
-
-                                <p>someone@abstractwebsite.com<br>
-                                    info@abstractwebsite.com <br>
-                                    Phone: (+63) 555 1212
-                                </p>
-
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="email" aria-required="true" name="widget-contact-form-email" required class="form-control required email" placeholder="Enter your Email">
                             </div>
-
                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="subject">Your Subject</label>
+                                <input type="text" name="widget-contact-form-subject" required class="form-control required" placeholder="Subject...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea type="text" name="widget-contact-form-message" required rows="5" class="form-control required" placeholder="Enter your Message"></textarea>
+                        </div>
+                        <!--    <div class="form-group">
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                <div class="g-recaptcha" data-sitekey="6LddCxAUAAAAAKOg0-U6IprqOZ7vTfiMNSyQT2-M"></div>
+                            </div> -->
+                        <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: CONTENT -->
+    <!-- MAP -->
 
-                        <form name="cForm" id="cForm" method="post" action="">
-                            <fieldset>
-
-                                <div class="form-field">
-                                    <input name="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
-                                </div>
-
-                                <div class="form-field">
-                                    <input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
-                                </div>
-
-                                <div class="form-field">
-                                    <input name="cWebsite" type="text" id="cWebsite" class="full-width" placeholder="Website"  value="">
-                                </div>
-
-                                <div class="message form-field">
-                                    <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message" ></textarea>
-                                </div>
-
-                                <button type="submit" class="submit button-primary full-width-on-mobile">Submit</button>
-
-                            </fieldset>
-                        </form> <!-- end form -->
-
-                </section>
-
-
-            </div> <!-- end col-twelve -->
-        </div> <!-- end row -->
-    </section> <!-- end content -->
 @endsection
-<script src="http://maps.google.com/maps/api/js?v=3.13&amp;sensor=false"></script>
+
+

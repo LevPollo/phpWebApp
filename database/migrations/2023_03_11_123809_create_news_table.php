@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')->nullOnDelete();
             $table->string('title');
             $table->string('image')->nullable();
             $table->text('text');
 
 
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
             $table->timestamps();
         });
     }

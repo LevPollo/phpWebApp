@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\News;
+use App\Models\Tags;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\ErrorHandler\Collecting;
 
-class MyPlaceController extends Controller
+class
+
+
+
+
+MyPlaceController extends Controller
 
 
 {
@@ -18,31 +25,46 @@ class MyPlaceController extends Controller
         return News::all();
     }
 
-
     public function main()
     {
 
-       // $categories
-
-
-
         return view('index',
             [
-                'news'=>$this->setNews()
-            ]);
+                'news'=>$this->setNews(),
 
+            ]);
     }
 
-    public function category()
+    public function category(int $id = null)
     {
 
-        $categories = Categories::all();
         return view('category',
             [
-                'news'=>$this->setNews()
+                'news'=>$this->setNews(),
+                'categoryId'=>$id,
             ]);
-
     }
+
+    public function post(int $id = null)
+    {
+        $thisPost = null;
+        foreach ($this->setNews() as $post){
+            if($post->id == $id){
+                $thisPost = $post;
+            }
+        }
+//        dd($post);
+
+      return view('post',
+        [
+            'news'=>$this->setNews(),
+            'postId'=>$id,
+            'thisPost'=>$thisPost ,
+
+        ]);
+    }
+
+
 
     public function contact()
     {
@@ -54,6 +76,13 @@ class MyPlaceController extends Controller
     }
 
 
+
+    public function profile()
+    {
+
+
+        return view('profile');
+    }
 
     public function about()
     {

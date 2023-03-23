@@ -1,83 +1,125 @@
-/* ===================================================================
- * fonts.scss)
- *
- * ------------------------------------------------------------------- */
-
-/*
- * Roboto
-================================================================================ */
-@font-face {
-	font-family: "roboto-light";
-	src: url("../fonts/roboto/roboto-light-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-light-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Background colors*/
+/*Typography*/
+/*Font*/
+/*Header*/
+/*Side Panel*/
+/*Page Titile*/
+/*Margins*/
+/*Transitions*/
+/* ------------------------------------------------------------------------ Fonts - Find/Replace your website fonts with your custom font name.
+-------------------------------------------------------------------------*/
+/*Body*/
+body {
+	font-size: 1em;
+	font-family: "Nunito", "Helvetica", "Arial", sans-serif;
 }
 
-@font-face {
-	font-family: "roboto-regular";
-	src: url("../fonts/roboto/roboto-regular-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-regular-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/*Paragraphs*/
+p {
+	font-family: "Nunito", "Helvetica", "Arial", sans-serif;
 }
 
-@font-face {
-	font-family: "roboto-italic";
-	src: url("../fonts/roboto/roboto-italic-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-italic-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/*Headings*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
 }
 
-@font-face {
-	font-family: "roboto-medium";
-	src: url("../fonts/roboto/roboto-medium-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-medium-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/*Main Menu*/
+#mainMenu nav>ul>li>a {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.6px;
 }
 
-@font-face {
-	font-family: "roboto-bold";
-	src: url("../fonts/roboto/roboto-bold-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-bold-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+#mainMenu nav>ul>li .dropdown-menu>li>a,
+#mainMenu nav>ul>li .dropdown-menu>li>span,
+#mainMenu nav>ul>li .dropdown-menu>li [class*="col-"]>ul>li>a {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
 }
 
-@font-face {
-	font-family: "roboto-black";
-	src: url("../fonts/roboto/roboto-black-webfont.woff2") format("woff2"), url("../fonts/roboto/roboto-black-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+#mainMenu nav>ul>li.mega-menu-item .mega-menu-content .mega-menu-title {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 13px;
+	font-weight: 600;
 }
 
-/*
- * Montserrat
-================================================================================ */
-@font-face {
-	font-family: "montserrat-regular";
-	src: url("../fonts/montserrat/montserrat-regular-webfont.woff2") format("woff2"), url("../fonts/montserrat/montserrat-regular-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+.header-extras>ul>li>a:not(.btn),
+.header-extras>ul>li .topbar-dropdown>.title {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 12px;
+	font-weight: 700;
 }
 
-@font-face {
-	font-family: "montserrat-bold";
-	src: url("../fonts/montserrat/montserrat-bold-webfont.woff2") format("woff2"), url("../fonts/montserrat/montserrat-bold-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/*Page Menu*/
+.page-menu nav>ul>li {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
 }
 
-/*
- * Muli
-================================================================================ */
-@font-face {
-	font-family: "muli-regular";
-	src: url("../fonts/muli/muli-regular-webfont.woff2") format("woff2"), url("../fonts/muli/muli-regular-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+.page-menu nav>ul>li .dropdown-menu {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
 }
 
-@font-face {
-	font-family: "muli-light";
-	src: url("../fonts/muli/muli-light-webfont.woff2") format("woff2"), url("../fonts/muli/muli-light-webfont.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
+/*Sidebar Menu*/
+.sidebar-menu {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+/*Buttons*/
+button,
+a.btn:not([href]):not([tabindex]),
+.btn {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+/*slider*/
+.inspiro-slider .slide .slide-captions .strong {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+/*Page Title*/
+#page-title .page-title>h1 {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 44px;
+	line-height: 56px;
+	font-weight: 400;
+}
+
+/*Footer*/
+#footer {
+	font-size: 14px;
+	font-weight: 400;
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+#footer p {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+#footer .widget .widget-title,
+#footer .widget h4 {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+
+#footer .widget .widget-title ul li a,
+#footer .widget h4 ul li a {
+	font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+	font-size: 15px;
 }

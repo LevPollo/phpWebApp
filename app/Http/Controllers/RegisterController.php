@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,14 +26,22 @@ class RegisterController extends Controller
             'email' => 'required|string|email|unique:users', //проверяем таблицу user на совпадение ящиков
             'password' => 'required|confirmed|min:8' // проверка на свопадение паролей
         ]);
+        $userInformation = UserInformation::create();
+
 
         $user = User::create([
-            'nickname'=>$request->name,
+            'name'=>$request->name,
             'email'=> $request->email,
             'password'=>Hash::make($request->password),
             'phone'=>$request->phone,
-            'token'=>$request->_token
+            'token'=>$request->_token,
+            'user_info_id'=>$userInformation->id,
         ]);
+
+
+
+
+
 
 
         Auth::login($user);

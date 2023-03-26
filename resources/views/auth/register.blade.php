@@ -20,7 +20,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12  ">
-                                    <h3>Register New Account</h3>
+                                    <h3 class="text-center">Register New Account</h3>
                                     <p>Create an account by entering the information below. If you are a returning
                                         customer please login at the top of the page.</p>
                                 </div>
@@ -35,11 +35,7 @@
                                     <input type="password" value="{{old('password')}}" name="password"
                                            placeholder="Password" class="form-control">
                                 </div>
-                                <div class="col-lg-6 form-group">
-                                    <label class="sr-only">Password</label>
-                                    <input type="password" value="" name="password_confirmation" placeholder="Password"
-                                           class="form-control">
-                                </div>
+
 
                                 <div class="col-lg-6 form-group">
                                     <label class="sr-only">Email</label>
@@ -47,16 +43,21 @@
                                            class="form-control">
                                 </div>
                                 <div class="col-lg-6 form-group">
+                                    <label class="sr-only">Password</label>
+                                    <input type="password" value="" name="password_confirmation" placeholder="Password"
+                                           class="form-control">
+                                </div>
+                                <div class="col-lg-6 form-group">
                                     <label class="sr-only">Phone</label>
                                     <input type="text" value="{{old('phone')}}" name="phone" placeholder="Phone"
                                            class="form-control">
                                 </div>
-                                <div class="col-lg-12  form-group">
-                                    <button class="btn" type="submit">Register New Account</button>
-                                    <button type="button" class="btn btn-danger m-l-10">Cancel</button>
-                                </div>
-                            </div>
 
+                            </div>
+                            <div class=" form-group">
+                                <button class="btn " type="submit">Register New Account</button>
+
+                            </div>
                         </form>
                     </div>
                 </div>

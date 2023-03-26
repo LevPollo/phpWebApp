@@ -75,7 +75,13 @@
                                 </li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li><a href="{{route('about')}}">About</a></li>
-                                <li><a href="{{ route('login')}}">Login</a></li>
+                                @if($routeName == 'profile')
+                                    <li><a href="{{ route('logout')}}">Logout</a></li>
+                                @elseif($routeName == 'login')
+                                    <li><a href="{{ route('register')}}">Register</a></li>
+                                @else
+                                    <li><a href="{{ route('login')}}">Login</a></li>
+                                @endif
                                 {{--                                <li><a href="{{route('profile')}}">Profile</a></li>--}}
                                 {{--                                <li><a href="{{route('login')}}">Login</a></li>--}}
 
@@ -92,7 +98,8 @@
     ================================================== -->
     @yield('section')
 
-    <footer id="footer " class=" ">
+    <footer id="footer "  class="m-50">
+
         <div class="footer-content ">
             <div class="container">
                 <div class="row">

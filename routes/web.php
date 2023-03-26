@@ -1,8 +1,10 @@
 <?php
 
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyPlaceController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
@@ -17,18 +19,24 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//1)Доработать проверку при регистрации
+//2)Сделать проверку при смене данных
+//3)Напсать метод отвечающий за элементов на странице и кол-во страниц
+//4)Придумать главную страницу
+//5)Доделать проверку формы
 
-
-//домашня страница подтягивается через контрлллер майн
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
 
 Route::get('/category/{id?}',  [MyPlaceController::class, 'category'])->name('category');
 
 Route::get('/post{id}',[MyPlaceController::class,'post'])->name('post');
-Route::get('/contact',  [MyPlaceController::class, 'contact'])->name('contact');
+
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::post('/contact',[ContactController::class,'sendMessage']);
+
 Route::get('/about',[MyPlaceController::class,'about'])->name('about');
 
-Route::get('/profile',[MyPlaceController::class,'profile'])->middleware('auth')->name('profile');
+Route::get('/profile',[ProfileController::class,'profile'])->middleware('auth')->name('profile');
 
 Route::get('/register',[RegisterController::class,'create'])->middleware('guest')->name('register');
 Route::post('/register',[RegisterController::class,'save'])->middleware('guest');
@@ -37,7 +45,10 @@ Route::get('/login',[LoginController::class,'login'])->middleware('guest')->name
 Route::post('/login',[LoginController::class,'save'])->middleware('guest');
 
 
-Route::get('/logout',[RegisterController::class,'logout']);
+Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
+
+Route::get('/profile/change',[ProfileController::class,'changeInfo'])->name('profile_change');
+Route::post('/profile/change',[ProfileController::class,'changeSave']);
 
 
 

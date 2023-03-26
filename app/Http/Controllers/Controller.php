@@ -8,8 +8,10 @@ use App\Models\News;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use App\Models\User;
 
 class Controller extends BaseController
 {
@@ -17,6 +19,9 @@ class Controller extends BaseController
     public int $activePage = 1;
     public int $postLimit = 2;
     public int $pagesCount = 0;
+
+
+
 
     private function  setComments()
     {
@@ -41,6 +46,9 @@ class Controller extends BaseController
         View::share('postLimit',$this->postLimit);
         View::share('pagesCount',$this->pagesCount);
         View::share('activePage',$this->activePage);
+
+
+
 
     }
 

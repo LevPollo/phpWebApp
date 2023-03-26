@@ -1,18 +1,12 @@
 @extends('layouts.app')
 @section('section')
+
     <div class="">
     <section id="page-title" class="">
         <div class="container ">
             <div class="page-title">
                 <h1>Profile</h1>
-                <span>Good day User</span>
-            </div>
-            <div class="breadcrumb">
-                <ul>
-                    <li><a href="#">Home</a> </li>
-                    <li><a href="#">Layout</a> </li>
-                    <li class="active"><a href="#">Widgets</a> </li>
-                </ul>
+                <span>Good day {{Auth::user()->name}}</span>
             </div>
         </div>
     </section>
@@ -26,7 +20,7 @@
                 <div class="grid-item">
                     <!-- Mini gallery-->
                     <div class="widget widget-gallery p-cb ">
-                        <h4 class="widget-title">Mini Gallery</h4>
+                        <h4 class="widget-title">My Posts</h4>
                         <div data-lightbox="gallery">
                             <a href="homepages/magazine/images/news/grid/5.jpg" data-lightbox="gallery-image">
                                 <img alt="image" src="homepages/magazine/images/news/grid/5.jpg">
@@ -64,16 +58,19 @@
                     <!-- Widget My Account -->
                     <div class="widget widget-myaccount p-cb">
                         <div class="d-block">
-                            <img class="avatar avatar-lg" src="images/team/6.jpg">
+                            <img class="avatar avatar-lg" src=
+                                @if(Auth::user()->information) {{Auth::user()->information->avatar}}
+                                @else {{asset('images/users_images/not_found_user/avatar/1.PNG')}}
+                                 @endif>
                         </div>
                         <span>Juna Doe</span>
                         <p class="text-muted">Professional developer</p>
                         <ul class="text-center">
-                            <li><a href="#"><i class="icon-user"></i>My profile</a></li>
-                            <li><a href="#"><i class="icon-clock"></i>Activity logs</a></li>
-                            <li><a href="#"><i class="icon-mail"></i>Messages</a></li>
-                            <li><a href="#"><i class="icon-settings"></i>Settings</a></li>
-                            <li><a href="#"><i class="icon-log-out"></i>Sing Out</a>
+                            <li><a href="{{route('profile_change')}}"><i class="icon-user"></i>Change profile</a></li>
+                            <li><a href="#"><i class="icon-clock"></i>Activity logs//in developing</a></li>
+                            <li><a href="#"><i class="icon-mail"></i>Messages//in developing</a></li>
+                            <li><a href="#"><i class="icon-settings"></i>Settings//in developing</a></li>
+                            <li><a href="{{route('logout')}}"><i class="icon-log-out"></i>Sing Out</a>
                             </li>
                         </ul>
                     </div>
@@ -121,32 +118,14 @@
 
 
 
-                <div class="grid-item">
-                    <!--widget tags -->
-                    <div class="widget widget-tags p-cb">
-                        <h4 class="widget-title">Tags</h4>
-                        <div class="tags">
-                            <a href="#">Design</a>
-                            <a href="#">Portfolio</a>
-                            <a href="#">Digital</a>
-                            <a href="#">Branding</a>
-                            <a href="#">HTML</a>
-                            <a href="#">Clean</a>
-                            <a href="#">Peace</a>
-                            <a href="#">Love</a>
-                            <a href="#">CSS3</a>
-                            <a href="#">jQuery</a>
-                        </div>
-                    </div>
-                    <!--end: widget tags -->
-                </div>
 
 
 
                 <div class="grid-item">
                     <!--Contact us-->
+
                     <div class="widget clearfix widget-contact-us p-cb" style="background-image: url('images/world-map-dark.png'); background-position: 50% 20px; background-repeat: no-repeat">
-                        <h4 class="widget-title">Contact us</h4>
+                        <h4 class="widget-title"><Contact></Contact></h4>
                         <ul class="list-icon">
                             <li><i class="icon-map-pin"></i>
                                 <strong>Address:</strong> 121 King Street, Melbourne <br>
@@ -272,7 +251,7 @@
 
                 <div class="grid-item">
                     <div class="widget widget-shop p-cb">
-                        <h4 class="widget-title">Latest Products</h4>
+                        <h4 class="widget-title">Latest News</h4>
                         <div class="product">
                             <div class="product-image">
                                 <a href="#"><img src="images/shop/products/10.jpg" alt="Shop product image!">

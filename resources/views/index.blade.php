@@ -45,7 +45,7 @@
                                 <p> {{$news[$i-1]->text}}</p>
                                 <div class="post-author "><img class="img-fluid"
                                                                src="{{asset($news[$i-1]->user->information->avatar)}}">
-                                    <p>by <a href="#">{{$news[$i-1]->user->nickname}}</a> 2 days ago </p>
+                                    <p>by <a href="#">{{$news[$i-1]->user->name}}</a> 2 days ago </p>
                                 </div>
                                 <br>
                                 <div class="post-tags ">

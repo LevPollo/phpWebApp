@@ -33,7 +33,7 @@
                                     <h2><a href="#"></a></h2>
                                     <p> {{$post->text}}</p>
                                     <div class="post-author"> <img src="{{asset($post->user->information->avatar)}}">
-                                        <p>by <a href="#">{{$post->user->nickname}}</a> 2 days ago </p>
+                                        <p>by <a href="#">{{$post->user->name}}</a> 2 days ago </p>
 
                                     </div>
                                     <br>

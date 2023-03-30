@@ -16,12 +16,11 @@ use App\Models\User;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-    public int $activePage = 1;
-    public int $postLimit = 2;
-    public int $pagesCount = 0;
 
-
-
+    public function setNews()
+    {
+        return News::all();
+    }
 
     private function  setComments()
     {
@@ -40,14 +39,10 @@ class Controller extends BaseController
     public function __construct()
     {
 
+        View::share('news', $this->setNews());
         View::share('routeName', $this->routeName());
         View::share('setCategories', $this->setCategories());
         View::share('comments',$this->setComments());
-        View::share('postLimit',$this->postLimit);
-        View::share('pagesCount',$this->pagesCount);
-        View::share('activePage',$this->activePage);
-
-
 
 
     }

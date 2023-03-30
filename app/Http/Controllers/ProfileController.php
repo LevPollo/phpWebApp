@@ -2,52 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\changeProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-
-    private function getAuth()
-    {
-        return [
-            'authId'=>Auth::user()->id,
-            'authName'=>Auth::user()->name,
-            'authInfo'=>Auth::user()->information,
-            'authPassword'=>Auth::user()->password,
-            ];
-    }
-
     public function profile()
     {
-
-        return view('profile',$this->getAuth());
+        return view('profile');
     }
+
+
+
     public function changeInfo()
     {
 
-        return view('auth.change',$this->getAuth());
+        return view('auth.change',[
+            'authUser'=> Auth::user(),
+            ]);
 
     }
 
-    public function changeSave(Request $request)
+    public function changeSave(changeProfile $request)
     {
-
-//            $request->validate([
-//                'name' => 'required|string', //не делает проверку
-//                'email' => 'required|string|email|unique:users', //проверяем таблицу user на совпадение ящиков
-//                'password' => 'required|confirmed|min:8' // проверка на свопадение паролей
-//            ]);
+//        $validated = $request->validated();
 
         $userInformation = Auth::user()->information;
         $user = Auth::user();
 
-        $user->name = $request->name;
-        $user->password = Hash::make($request->password);
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->save();
+//        $user->name = $validated['name'];
+//        $user->password = Hash::make($validated['password']);
+//        $user->phone = $validated['phone'];
+//        $user->email = $validated['email'];
+//        $user->save();
 
         $userInformation->first_name = $request->firstname;
         $userInformation->last_name = $request->lastname;
@@ -56,9 +45,10 @@ class ProfileController extends Controller
         $userInformation->city = $request->city;
         $userInformation->address = $request->address;
         $userInformation->avatar = $request->avatar;
+
         $userInformation->save();
 
-
+        return back()->withInput();
     }
 
 }

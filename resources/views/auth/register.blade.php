@@ -8,17 +8,11 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 center p-40 bg-dark text-light ">
-                        <ul>
+                    <div class="col-lg-6 center p-40 bg-dark ">
 
-
-                            @foreach( $errors->all() as $error )
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                        <form class=" " action="{{route('register')}}" method="post" novalidate>
+                        <form class=" " action="{{route('register')}}" method="post" >
                             @csrf
-                            <div class="row">
+                            <div class="row  text-light">
                                 <div class="col-lg-12  ">
                                     <h3 class="text-center">Register New Account</h3>
                                     <p>Create an account by entering the information below. If you are a returning
@@ -28,7 +22,7 @@
                                 <div class="col-lg-6 form-group">
                                     <label class="sr-only bg-danger">Username</label>
                                     <input type="text" value="{{old('name')}}" name="name" placeholder="Username"
-                                           class="form-control  ">
+                                           class="form-control">
                                 </div>
                                 <div class="col-lg-6 form-group">
                                     <label class="sr-only">Password</label>
@@ -49,15 +43,20 @@
                                 </div>
                                 <div class="col-lg-6 form-group">
                                     <label class="sr-only">Phone</label>
-                                    <input type="text" value="{{old('phone')}}" name="phone" placeholder="Phone"
+                                    <input type="tel"   pattern="[0-9]{12}" value="{{old('phone')}}" name="phone" placeholder="375XXXXXXXXX"
                                            class="form-control">
                                 </div>
 
                             </div>
-                            <div class=" form-group">
+                            <div class=" form-group  text-light">
                                 <button class="btn " type="submit">Register New Account</button>
 
                             </div>
+                            <ul style="margin-left:15px">
+                            @foreach( $errors->all() as $error )
+                                <li style="color:red">{{ $error }}</li>
+                            @endforeach
+                            </ul>
                         </form>
                     </div>
                 </div>

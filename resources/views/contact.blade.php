@@ -1,6 +1,13 @@
 @extends('layouts/app')
 
 @section('section')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <section>
         <div class="container text-dark">
@@ -20,7 +27,7 @@
                                 <strong>Polo, Inc.</strong><br>
                                 795 Folsom Ave, Suite 600<br>
                                 San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</h4> (123) 456-7890
+
                             </address>
                         </div>
                         <div class="col-lg-6">
@@ -74,11 +81,24 @@
                             <button class="btn " type="submit">Register New Account</button>
 
                         </div>
+                        @foreach( $errors->all() as $error )
+
+                            <li>{{ $error }}</li>
+
+                        @endforeach
+                        <script>
+                            @if(Session::has('success'))
+                                toastr.success("{{ session('success') }}")
+                            @endif
+                        </script>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+
+
     <!-- end: CONTENT -->
     <!-- MAP -->
 

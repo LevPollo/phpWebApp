@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\contactRequest;
 use App\Models\FeedbackMessage;
 use Illuminate\Http\Request;
 
@@ -13,28 +14,24 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function sendMessage(Request $request)
+    public function sendMessage(contactRequest $request)
     {
 
-//        $request->validate([
-//            'email' => 'request|string|email'
-//        ]);
+        $validated = $request->validated();
 
-        $feedBackMessage = FeedbackMessage::create([
+        $feedback = FeedbackMessage::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'subject'=>$request->subject,
             'message'=>$request->message
         ]);
 
-        return redirect('/profile');
+
+        return back()->with('success','The message has been added');
 
 
     }
-//    public function sendMessage()
-//    {
-//        return view('profile');
-//    }
+
 
 
 

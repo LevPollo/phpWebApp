@@ -6,13 +6,16 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="INSPIRO"/>
     <meta name="description" content="Themeforest Template Polo, html template">
+
     <link rel="icon" type="image/png" href="{{asset("images/favicon.png")}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
     <title>POLO | The Multi-Purpose HTML5 Template</title>
     <!-- Stylesheets & Fonts -->
+
     <link href="{{asset('css/plugins.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -64,7 +67,7 @@
                             <ul>
                                 <li><a href="{{route('main')}}">Home</a></li>
 
-                                <li class="dropdown "><a>Pages</a>
+                                <li class="dropdown "><a href="{{route('categoryAll')}}">Category</a>
                                     <ul class="dropdown-menu ">
                                         @foreach($setCategories as $category)
 
@@ -75,13 +78,13 @@
                                 </li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li><a href="{{route('about')}}">About</a></li>
-                                @if($routeName == 'profile')
+                                @if(auth()->check())
                                     <li><a href="{{ route('logout')}}">Logout</a></li>
-                                @elseif($routeName == 'login')
-                                    <li><a href="{{ route('register')}}">Register</a></li>
+                                    <li><a href="{{ route('profile')}}">Profile</a></li>
                                 @else
                                     <li><a href="{{ route('login')}}">Login</a></li>
                                 @endif
+
                                 {{--                                <li><a href="{{route('profile')}}">Profile</a></li>--}}
                                 {{--                                <li><a href="{{route('login')}}">Login</a></li>--}}
 
@@ -180,6 +183,8 @@
 <script src="{{asset('js/plugins.js')}}"></script>
 <!--Template functions-->
 <script src="{{asset('js/functions.js')}}"></script>
+
+
 </body>
 
 </html>

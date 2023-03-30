@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\registerRequest;
 use App\Models\User;
 use App\Models\UserInformation;
 use Illuminate\Http\Request;
@@ -18,31 +19,21 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function save(Request $request)
+    public function save(registerRequest $request)
     {
 
-        $request->validate([
-            'name' => 'required|string', //не делает проверку
-            'email' => 'required|string|email|unique:users', //проверяем таблицу user на совпадение ящиков
-            'password' => 'required|confirmed|min:8' // проверка на свопадение паролей
-        ]);
+        $validated = $request->validated();
+
         $userInformation = UserInformation::create();
 
-
         $user = User::create([
-            'name'=>$request->name,
-            'email'=> $request->email,
-            'password'=>Hash::make($request->password),
-            'phone'=>$request->phone,
+            'name'=>$validated['name'],
+            'email'=> $validated['email'],
+            'password'=>Hash::make($validated['password']),
+            'phone'=>$validated['phone'],
             'token'=>$request->_token,
             'user_info_id'=>$userInformation->id,
         ]);
-
-
-
-
-
-
 
         Auth::login($user);
 

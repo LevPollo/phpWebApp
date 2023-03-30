@@ -23,10 +23,11 @@ use Illuminate\Support\Facades\Auth;
 //2)Сделать проверку при смене данных
 //3)Напсать метод отвечающий за элементов на странице и кол-во страниц
 //4)Придумать главную страницу
-//5)Доделать проверку формы
+//5)Доделать проверку формыar
 
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
 
+Route::get('/categoryall',  [MyPlaceController::class, 'categoryAll'])->name('categoryAll');
 Route::get('/category/{id?}',  [MyPlaceController::class, 'category'])->name('category');
 
 Route::get('/post{id}',[MyPlaceController::class,'post'])->name('post');
@@ -47,15 +48,12 @@ Route::post('/login',[LoginController::class,'save'])->middleware('guest');
 
 Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
-Route::get('/profile/change',[ProfileController::class,'changeInfo'])->name('profile_change');
+Route::get('/profile/change',[ProfileController::class,'changeInfo'])->middleware('auth')->name('profile_change');
 Route::post('/profile/change',[ProfileController::class,'changeSave']);
 
 
 
 
-Route::get('/index',function (){
-    return view('index');
-});
 
 //Route::get($url,$callback); - обычный запрос
 //Route::get('url/{id}',function ($id)); - обычный запрос с динамичным индетификатором в адресе

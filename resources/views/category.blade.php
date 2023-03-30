@@ -21,7 +21,7 @@
                         <div class="post-item border ">
                             <div class="post-item-wrap">
                                 <div class="post-image">
-                                    <a href="#">
+                                    <a href="{{route('post',$post->id)}}">
                                         <img alt="" src="{{$post->image}}">
                                     </a>
                                     <span class="post-meta-category"><a href="">{{$post->category->title}}</a></span>
@@ -32,7 +32,7 @@
                                     <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
                                     <h2><a href="#"></a></h2>
                                     <p> {{$post->text}}</p>
-                                    <div class="post-author"> <img src="{{asset($post->user->information->avatar)}}">
+                                    <div class="post-author"> <img src="https://play-lh.googleusercontent.com/r1gNUI2MyuVY4U_ImvN_VUn9aKaZpCbkU4eYyXxaoygZ1gr1v9Pd-nGcC5RKzVvVrA">
                                         <p>by <a href="#">{{$post->user->name}}</a> 2 days ago </p>
 
                                     </div>

@@ -20,19 +20,12 @@ MyPlaceController extends Controller
 
 {
 
-    public function setNews()
-    {
-        return News::all();
-    }
+
 
     public function main()
     {
 
-        return view('index',
-            [
-                'news'=>$this->setNews(),
-
-            ]);
+        return view('indexTwo');
     }
 
     public function category(int $id = null)
@@ -44,7 +37,13 @@ MyPlaceController extends Controller
                 'categoryId'=>$id,
             ]);
     }
-
+    public function categoryAll()
+    {
+        return view('categoryAll',
+            [
+                'news'=>$this->setNews(),
+            ]);
+    }
     public function post(int $id = null)
     {
         $thisPost = null;
@@ -53,28 +52,15 @@ MyPlaceController extends Controller
                 $thisPost = $post;
             }
         }
-//        dd($post);
+
 
       return view('post',
         [
-            'news'=>$this->setNews(),
+
             'postId'=>$id,
             'thisPost'=>$thisPost ,
 
         ]);
-    }
-
-
-
-
-
-
-
-    public function profile()
-    {
-
-
-        return view('profile');
     }
 
     public function about()

@@ -15,40 +15,22 @@
     <section id="page-content" class="">
         <div class="container">
             <!-- grid layout -->
-            <div class="grid-layout grid-3-columns" data-item="grid-item" data-margin="10">
+        <div class="grid-layout grid-3-columns" data-item="grid-item" data-margin="10">
 
                 <div class="grid-item">
                     <!-- Mini gallery-->
                     <div class="widget widget-gallery p-cb ">
                         <h4 class="widget-title">My Posts</h4>
+{{--                        {{dd(Auth::user()->news)}}--}}
                         <div data-lightbox="gallery">
-                            <a href="homepages/magazine/images/news/grid/5.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/5.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/6.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/6.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/7.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/7.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/8.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/8.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/9.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/9.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/10.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/10.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/11.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/11.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/12.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/12.jpg">
-                            </a>
-                            <a href="homepages/magazine/images/news/grid/13.jpg" data-lightbox="gallery-image">
-                                <img alt="image" src="homepages/magazine/images/news/grid/13.jpg">
-                            </a>
+                            @foreach(Auth::user()->posts as $post)
+
+                                <a href="{{route('post',$post->id)}}" >
+                                    <img alt="image" src="{{asset($post->image)}}">
+                                </a>
+                            @endforeach
+
+
                         </div>
                     </div>
                     <!-- end: mini gallery -->
@@ -58,6 +40,7 @@
                     <!-- Widget My Account -->
                     <div class="widget widget-myaccount p-cb">
                         <div class="d-block">
+
                             <img class="avatar avatar-lg" src=
                                 @if(Auth::user()->information) {{Auth::user()->information->avatar}}
                                 @else {{asset('images/users_images/not_found_user/avatar/1.PNG')}}

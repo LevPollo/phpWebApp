@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\loginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,20 +16,16 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function save(Request $request)
+    public function save(loginRequest $request)
     {
 
-        $request->validate([
-
-            'email' => 'required|string|email', //проверяем таблицу user на совпадение ящиков
-            'password' => 'required|string' // проверка на свопадение паролей
-        ]);
+        $request->validated();
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return view('profile');
+
+            return redirect('profile');
         }
         return back()->withInput();
 
     }
-
 }

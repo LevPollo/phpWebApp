@@ -65,7 +65,38 @@
                                         Comments <span>{{count($thisPost->comments)}}</span>
                                     </div>
                                     <div class="comment-list">
+
+
+
                                         <!-- Comment -->
+                                        @if(auth()->check())
+                                            <form class="form-gray-fields" method="POST" action="{{route("post",$thisPost->id)}}">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label class="upper" for="comment">Your comment</label>
+                                                            <textarea class="form-control required" name="text" rows="9" placeholder="Enter comment" id="comment" aria-required="true"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group text-center">
+                                                            <button class="btn" type="submit">Submit Comment</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @foreach( $errors->all() as $error )
+                                                    <li style="color:red">{{ $error }}</li>
+                                                @endforeach
+                                            </form>
+                                        @else
+                                            <br>
+                                            <a href="{{route('login')}}">login to write a comment</a>
+                                            <br>
+                                        @endif
+
                                         @foreach($thisPost->comments as $comment)
                                             <div class="comment">
 

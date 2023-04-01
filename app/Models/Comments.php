@@ -9,7 +9,7 @@ class Comments extends Model
 {
     use HasFactory;
 
-    //достаём юзера из комента
+    protected $fillable = ['text', 'user_id', 'news_id'];
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

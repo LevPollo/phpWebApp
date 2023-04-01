@@ -4,6 +4,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyPlaceController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,8 @@ Route::get('/', [MyPlaceController::class,'main'])->name('main');
 Route::get('/categoryall',  [MyPlaceController::class, 'categoryAll'])->name('categoryAll');
 Route::get('/category/{id?}',  [MyPlaceController::class, 'category'])->name('category');
 
-Route::get('/post{id}',[MyPlaceController::class,'post'])->name('post');
+Route::get('/post{id}',[PostController::class,'post'])->name('post');
+Route::post('/post{id}',[PostController::class,'sendComment'])->middleware('auth');
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 Route::post('/contact',[ContactController::class,'sendMessage']);
@@ -50,6 +52,8 @@ Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
 Route::get('/profile/change',[ProfileController::class,'changeInfo'])->middleware('auth')->name('profile_change');
 Route::post('/profile/change',[ProfileController::class,'changeSave']);
+
+
 
 
 

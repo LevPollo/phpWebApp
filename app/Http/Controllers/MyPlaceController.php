@@ -44,24 +44,7 @@ MyPlaceController extends Controller
                 'news'=>$this->setNews(),
             ]);
     }
-    public function post(int $id = null)
-    {
-        $thisPost = null;
-        foreach ($this->setNews() as $post){
-            if($post->id == $id){
-                $thisPost = $post;
-            }
-        }
 
-
-      return view('post',
-        [
-
-            'postId'=>$id,
-            'thisPost'=>$thisPost ,
-
-        ]);
-    }
 
     public function about()
     {

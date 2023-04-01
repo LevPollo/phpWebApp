@@ -15,7 +15,7 @@ class News extends Model
     use HasFactory;
 
 
-    //получить все тэги этого поста
+
 
 
     public function tags(): BelongsToMany

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\contactRequest;
+use App\Mail\ContactForm;
+use App\Mail\Spammer;
 use App\Models\FeedbackMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -26,8 +29,14 @@ class ContactController extends Controller
             'message'=>$request->message
         ]);
 
+        Mail::to("pollolev@gmail.com")->send(new Spammer());
 
         return back()->with('success','The message has been added');
+
+
+
+
+
 
 
     }

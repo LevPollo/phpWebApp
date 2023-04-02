@@ -1,24 +1,27 @@
 <?php
 
 namespace App\Mail;
-
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactForm extends Mailable
+class Spammer extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(
+        protected $testText = 'text'
+    )
     {
-        //
+        $this->testText = 'test text';
     }
 
     /**
@@ -27,7 +30,8 @@ class ContactForm extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Form',
+            from: new Address('pollolev@gmail.com', 'Jeffrey Way'),
+            subject: 'Spammer',
         );
     }
 
@@ -37,7 +41,10 @@ class ContactForm extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.spam',
+            with: [
+                'testText' => $this->testText,
+            ]
         );
     }
 
@@ -48,6 +55,10 @@ class ContactForm extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath('images/forNews/bear.png')
+                ->as('bear.png')
+                ->withMime('image/bear'),
+        ];
     }
 }

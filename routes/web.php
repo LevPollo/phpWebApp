@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MyPlaceController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Auth;
 //3)Напсать метод отвечающий за элементов на странице и кол-во страниц
 //4)Придумать главную страницу
 //5)Доделать проверку формыar
+
+Route::get('/mail',[MailController::class,"sendMail"]);
 
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
 
@@ -52,6 +55,7 @@ Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
 Route::get('/profile/change',[ProfileController::class,'changeInfo'])->middleware('auth')->name('profile_change');
 Route::post('/profile/change',[ProfileController::class,'changeSave']);
+
 
 
 

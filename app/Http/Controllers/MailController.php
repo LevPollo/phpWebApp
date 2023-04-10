@@ -15,6 +15,7 @@ class MailController extends Controller
         $mail = $request->email;
 
         Mail::to($mail)->send(new Spammer());
+        Mail::to($mail)->send(new SuccessR());
 
     }
 }

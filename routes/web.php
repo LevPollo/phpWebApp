@@ -9,6 +9,10 @@ use App\Http\Controllers\MyPlaceController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
@@ -51,10 +55,30 @@ Route::post('/contact',[ContactController::class,'sendMessage']);
 
 Route::get('/about',[MyPlaceController::class,'about'])->name('about');
 
-Route::get('/profile',[ProfileController::class,'profile'])->middleware('auth')->name('profile');
+Route::get('/profile',[ProfileController::class,'profile'])->middleware(["auth","verified"])->name('profile');
+
 
 Route::get('/register',[RegisterController::class,'create'])->middleware('guest')->name('register');
 Route::post('/register',[RegisterController::class,'save'])->middleware('guest');
+Route::get("/email/verify",function (Request $request){
+    return $request->user()->hasVerifiedEmail()?
+        redirect()->intended(RouteServiceProvider::HOME):
+        view("auth.verify-email.blade");
+})->middleware(["auth"])->name("verification.notice");
+Route::get("/email/verify/{id}/{hash}",function(EmailVerificationRequest $request){
+    if( $request->user()->hasVerifiedEmail()){
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    $request->fulfill();
+
+    return redirect("profile");
+})->middleware(["auth", "signed"])->name("verification.verify");
+Route::post("/email/verification-notification",function (Request $request){
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with("message","Verification link sent");
+})->middleware("auth")->name("verification.send");
+
 
 Route::get('/login',[LoginController::class,'login'])->middleware('guest')->name('login');
 Route::post('/login',[LoginController::class,'save'])->middleware('guest');

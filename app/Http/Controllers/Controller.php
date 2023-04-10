@@ -36,7 +36,10 @@ class Controller extends BaseController
     {
         return Categories::all();
     }
-
+    public function setUsers()
+    {
+        return User::all();
+    }
 
     private function routeName()
     {
@@ -49,7 +52,7 @@ class Controller extends BaseController
         View::share('routeName', $this->routeName());
         View::share('setCategories', $this->setCategories());
         View::share('comments',$this->setComments());
-
+        View::share('users', $this->setUsers());
 
     }
 

@@ -20,8 +20,6 @@ MyPlaceController extends Controller
 
 {
 
-
-
     public function main()
     {
 
@@ -39,9 +37,33 @@ MyPlaceController extends Controller
     }
     public function categoryAll()
     {
+        $query = News::query();
+        $categoriesId = Categories::pluck('id');
+        $categoryArr = [];
+        foreach ($categoriesId as $id)
+        {
+            if(request()->has($id))
+            {
+                $categoryArr[] = $id;
+            }
+
+        }
+
+        if(count($categoryArr) > 0)
+        {
+            $news = $query->whereIn('category_id',$categoryArr)->paginate(12);
+        }
+        else
+        {
+            $news = News::query()->paginate(12);
+        }
+
+
+
+
         return view('categoryAll',
             [
-                'news'=>$this->setNews(),
+                'news'=>$news,
             ]);
     }
 

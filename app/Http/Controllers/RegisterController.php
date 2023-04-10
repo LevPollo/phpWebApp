@@ -24,7 +24,6 @@ class RegisterController extends Controller
 
         $validated = $request->validated();
 
-        $userInformation = UserInformation::create();
 
         $user = User::create([
             'name'=>$validated['name'],
@@ -32,7 +31,11 @@ class RegisterController extends Controller
             'password'=>Hash::make($validated['password']),
             'phone'=>$validated['phone'],
             'token'=>$request->_token,
-            'user_info_id'=>$userInformation->id,
+
+        ]);
+
+        $userInformation = UserInformation::create([
+            "user_id" => $user->id,
         ]);
 
         Auth::login($user);

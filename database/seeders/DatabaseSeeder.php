@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Categories;
+use App\Models\Comments;
 use App\Models\News;
+use App\Models\TagNews;
+use App\Models\Tags;
 use App\Models\User;
 use App\Models\UserInformation;
 use Illuminate\Database\Seeder;
@@ -18,15 +22,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        News::factory(10)->create();
-//        $users = User::factory(10)->create();
-//        $userInfo = UserInformation::factory(10)->create();
+        User::factory(100)->create();
+        UserInformation::factory(100)->create();
+        Tags::factory(100)->create();
+        Categories::factory(6)->create();
+        News::factory(60)->create();
+        TagNews::factory(1000)->create();
+        Comments::factory(5000)->create();
 
-//        foreach($users as $user)
-//        {
-//            dd($user);
-//        }
 
-//        dd($posts);
     }
 }

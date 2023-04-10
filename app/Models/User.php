@@ -19,11 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'name',
         'email',
         'password',
         'phone',
-        'user_info_id'
     ];
 
     /**
@@ -46,7 +44,7 @@ class User extends Authenticatable
     ];
     public function information()
     {
-        return $this->belongsTo(UserInformation::class,'user_info_id');
+        return $this->hasOne(UserInformation::class);
     }
 
     public function posts()

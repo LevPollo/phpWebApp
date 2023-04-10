@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<!-- Body Inner -->n
+<!-- Body Inner -->
 <div class="body-inner ">
     <!-- Header -->
 
@@ -81,9 +81,15 @@
                                 @if(auth()->check())
                                     <li><a href="{{ route('logout')}}">Logout</a></li>
                                     <li><a href="{{ route('profile')}}">Profile</a></li>
+                                    <li><a href="{{ route('admin.dashboard')}}">Admin</a></li>
+{{--                                    {{dd(Auth::user()->is_admin)}}--}}
+{{--                                    @if(Auth::user()->is_adimin == 1)--}}
+{{--                                        <li><a href="{{ route('admin')}}">Admin</a></li>--}}
+{{--                                    @endif--}}
                                 @else
                                     <li><a href="{{ route('login')}}">Login</a></li>
                                 @endif
+
 
                                 {{--                                <li><a href="{{route('profile')}}">Profile</a></li>--}}
                                 {{--                                <li><a href="{{route('login')}}">Login</a></li>--}}

@@ -40,10 +40,10 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p>{{$thisPost->text}}</p>
+                                    <p>{{$thisPost->text}}</p>php
                                     <div class="post-tags">
-    {{--                                    @foreach($post->tags as $tag) @endforeach--}}                                  @foreach($thisPost->tags as $tag)
-                                            <a href="#">{{$tag->name}}</a>
+                                        @foreach($thisPost->tags as $tag)
+                                            <a href="#">{{$tag->title}}</a>
                                           @endforeach
                                     </div>
                                 </div>
@@ -106,6 +106,7 @@
                                                     <span class="comment_date">{{$comment->created_at}}</span>
                                                     <a class="comment-reply-link" href="#">Reply</a>
                                                     <div class="text_holder">
+                                                        <h2><a href="#">{{$comment->title}}</a></h2>
                                                         <p>{{$comment->text}}</p>
                                                     </div>
                                                 </div>

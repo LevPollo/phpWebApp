@@ -1,26 +1,30 @@
 @extends('layouts.app')
 
 @section('section')
+
+{{--    {{dd($users->find(1)->information->avatar)}}--}}
     <section id="page-content">
 
         <div class="container ">
             <!-- post content -->
             <!-- Page title -->
-            <div class="page-title">
-                <h1>Blog Style - Author</h1>
-                <div class="breadcrumb float-left">
-                    <ul>
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li><a href="#">Blog</a>
-                        </li>
-                        <li class="active"><a href="#">Author Info</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
             <!-- end: Page title -->
             <!-- Blog -->
+            <div class="row m-b-20">
+
+
+            {{--                find--}}
+{{--                {{dd($news)}}--}}
+                    <form method="get" action="{{route('categoryAll')}}">
+                        <label for="price">Categories Filter:</label>
+                            @foreach($setCategories as $category)
+                                <span>{{$category->title}} :</a><input type="checkbox" name="{{$category->id}}" value="" checked></span>
+                            @endforeach
+                        <button type="submit">Фильтровать</button>
+                    </form>
+
+            </div>
             <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
                 <!-- Post item-->
 
@@ -41,9 +45,8 @@
                                             class="fa fa-calendar-o"></i>{{$post->created_at->format('d/m/Y')}}</span>
                                     <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i> {{count($post->comments)}} Comments</a></span>
                                     <h2><a href="#">{{$post->title}}</a></h2>
-                                    <p> {{$post->text}}</p>
                                     <div class="post-author "><img class="img-fluid"
-                                                                   src="https://play-lh.googleusercontent.com/r1gNUI2MyuVY4U_ImvN_VUn9aKaZpCbkU4eYyXxaoygZ1gr1v9Pd-nGcC5RKzVvVrA">
+                                                                   src="{{$post->user->information->avatar}}">
 
                                         <p>by <a href="#">{{$post->user->name}}</a> 2 days ago </p>
                                     </div>
@@ -62,18 +65,8 @@
             </div>
             <!-- end: Blog -->
             <!-- Pagination -->
+            <div>{{$news->links()}}</div>
 
-            <ul class="pagination">
-
-
-                <li class="page-item "><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-
-                    <li class="page-item active "><a class="page-link"  href=""></a></li>
-
-
-
-                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
             <!-- end: Pagination -->
         </div>
         <!-- end: post content -->

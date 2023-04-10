@@ -54,31 +54,29 @@
                     <form class="" action="{{route('contact')}}" method="POST" novalidate>
 
                         @csrf
-                        <div class="row">
-                            <div class="col-lg-6 form-group">
-                                <label class="sr-only bg-danger">Username</label>
-                                <input type="text" value="" name="name" placeholder="Username"
+                        <div class="row p-t-50" >
+                            <div class="col-lg-12 form-group">
+                                <label class="sr-only bg-danger">name</label>
+                                <input type="text" value="" name="name" placeholder="name"
                                        class="form-control">
                             </div>
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-12 form-group">
                                 <label class="sr-only bg-danger">email</label>
                                 <input type="email" value="" name="email" placeholder="email"
                                        class="form-control">
                             </div>
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-12 form-group">
                                 <label class="sr-only bg-danger">subject</label>
                                 <input type="text" value="" name="subject" placeholder="subject"
                                        class="form-control">
                             </div>
-                            <div class="col-lg-6 form-group">
-                                <label class="sr-only bg-danger">message</label>
-                                <input type="text" value="" name="message" placeholder="message"
-                                       class="form-control">
+                            <div class="col-lg-12 form-group">
+                                <textarea name="message" class="form-control"></textarea>
                             </div>
 
                         </div>
                         <div class=" form-group">
-                            <button class="btn " type="submit">Register New Account</button>
+                            <button class="btn " type="submit">SEND FEEDBACK</button>
 
                         </div>
                         @foreach( $errors->all() as $error )

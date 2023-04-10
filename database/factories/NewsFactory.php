@@ -21,15 +21,21 @@ class NewsFactory extends Factory
      */
     public function definition(): array
     {
+        $pathFull = "public/images/article_images/";
+        $path = "/images/article_images/";
+        $images = scandir($pathFull);
+        $images = array_diff($images,array(".",".."));
+
+
         return
             [
-                'user_id' => 50,
-                'title' => $this->faker->title(20),
-                'text' => $this->faker->text,
+                'user_id' => User::get()->random()->id,
                 'category_id' => Categories::get()->random()->id,
-                'image' => $this->faker->imageUrl(),
-
-
+                'title' => fake()->realText(20),
+                'text' => fake()->realText(1000),
+                'image' => $path.$images[rand(2,count($images))],
             ];
     }
 }
+
+

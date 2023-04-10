@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
@@ -27,6 +28,12 @@ use Illuminate\Support\Facades\Auth;
 //4)Придумать главную страницу
 //5)Доделать проверку формыar
 
+
+Route::middleware(["auth"])->prefix("admin")->group(function (){
+    Route::get("/dashboard",[AdminController::class,"dashboard"])->name("admin.dashboard");
+    Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
+});
+
 Route::get('/mail',[MailController::class,"sendMail"]);
 
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
@@ -38,7 +45,9 @@ Route::get('/post{id}',[PostController::class,'post'])->name('post');
 Route::post('/post{id}',[PostController::class,'sendComment'])->middleware('auth');
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::post('/contact',[MailController::class,"sendMail"]);
 Route::post('/contact',[ContactController::class,'sendMessage']);
+
 
 Route::get('/about',[MyPlaceController::class,'about'])->name('about');
 

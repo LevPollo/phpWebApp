@@ -20,6 +20,7 @@
                                     <input type="text" value="{{old('email')}}" name="email" placeholder="Email" class="form-control">
                                 </div>
 
+
                                 <div class="col-lg-12 p-1 form-group">
                                     <label class="sr-only">Password</label>
                                     <input type="password" value=""  name="password" placeholder="Password" class="form-control">
@@ -29,13 +30,10 @@
                                     <button class="btn " type="submit">login </button>
                                     <a href="{{route('register')}}" type="button" class="btn btn-danger m-l-10">Register</a>
                                 </div>
-                            </div>
 
-                            <ul>
+                            <ul class="mx-auto">
                                 @foreach( $errors->all() as $error )
-
                                     <li>{{ $error }}</li>
-
                                 @endforeach
                             </ul>
 

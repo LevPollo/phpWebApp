@@ -25,7 +25,8 @@ class LoginController extends Controller
 
             return redirect('profile');
         }
-        return back()->withInput();
-
+        return redirect(route("login"))->withErrors([
+            "formError" => "This account not found"
+        ]);
     }
 }

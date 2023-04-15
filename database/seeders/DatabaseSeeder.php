@@ -10,6 +10,8 @@ use App\Models\TagNews;
 use App\Models\Tags;
 use App\Models\User;
 use App\Models\UserInformation;
+use App\Models\UserPermissions;
+use Database\Factories\UserPermissionFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,12 +25,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(100)->create();
+//        UserPermissions::factory(100)->create();
         UserInformation::factory(100)->create();
         Tags::factory(100)->create();
         Categories::factory(6)->create();
         News::factory(60)->create();
-        TagNews::factory(1000)->create();
-        Comments::factory(5000)->create();
+        TagNews::factory(100)->create();
+        Comments::factory(300)->create();
 
 
     }

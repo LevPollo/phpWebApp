@@ -21,8 +21,13 @@ class LoginController extends Controller
 
         $request->validated();
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password')))
+        {
+            if (!$request->user()->hasVerifiedEmail())
+            {
 
+                return view("auth.verify-email");
+            }
             return redirect('profile');
         }
         return redirect(route("login"))->withErrors([

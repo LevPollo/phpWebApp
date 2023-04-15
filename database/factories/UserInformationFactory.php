@@ -20,7 +20,7 @@ class UserInformationFactory extends Factory
 
 
         return [
-            "user_id" => fake()->unique()->numberBetween(1, 100),
+                "user_id" => fake()->unique()->numberBetween(1, 100),
             "first_name" => fake()->firstName(),
             "last_name" => fake()->lastName(),
             "birthdate" => fake()->dateTime('2000-04-25 08:37:17',"GMT"),

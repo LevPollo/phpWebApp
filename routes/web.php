@@ -32,11 +32,14 @@ use Illuminate\Support\Facades\Auth;
 //4)Придумать главную страницу
 //5)Доделать проверку формыar
 
-
-Route::middleware(["auth"])->prefix("admin")->group(function (){
+Route::group(["prefix"=>"admin","middleware"=>"admin"],function (){
     Route::get("/dashboard",[AdminController::class,"dashboard"])->name("admin.dashboard");
     Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
 });
+//Route::middleware(["auth","admin"])->prefix("admin")->group(function (){
+//    Route::get("/dashboard",[AdminController::class,"dashboard"])->name("admin.dashboard");
+//    Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
+//});
 
 Route::get('/mail',[MailController::class,"sendMail"]);
 
@@ -60,18 +63,18 @@ Route::get('/profile',[ProfileController::class,'profile'])->middleware(["auth",
 
 Route::get('/register',[RegisterController::class,'create'])->middleware('guest')->name('register');
 Route::post('/register',[RegisterController::class,'save'])->middleware('guest');
+
 Route::get("/email/verify",function (Request $request){
     return $request->user()->hasVerifiedEmail()?
         redirect()->intended(RouteServiceProvider::HOME):
-        view("auth.verify-email.blade");
+        view("auth.verify-email");
 })->middleware(["auth"])->name("verification.notice");
+
 Route::get("/email/verify/{id}/{hash}",function(EmailVerificationRequest $request){
     if( $request->user()->hasVerifiedEmail()){
         return redirect()->intended(RouteServiceProvider::HOME);
     }
-
     $request->fulfill();
-
     return redirect("profile");
 })->middleware(["auth", "signed"])->name("verification.verify");
 Route::post("/email/verification-notification",function (Request $request){

@@ -2,7 +2,7 @@
 
 @section('section')
 
-{{--    {{dd($users->find(1)->information->avatar)}}--}}
+
     <section id="page-content">
 
         <div class="container ">
@@ -13,13 +13,10 @@
             <!-- Blog -->
             <div class="row m-b-20">
 
-
-            {{--                find--}}
-{{--                {{dd($news)}}--}}
                     <form method="get" action="{{route('categoryAll')}}">
                         <label for="price">Categories Filter:</label>
                             @foreach($setCategories as $category)
-                                <span>{{$category->title}} :</a><input type="checkbox" name="{{$category->id}}" value="" checked></span>
+                                <span><a>{{$category->title}} :</a><input type="checkbox" name="{{$category->id}}" value="" checked></span>
                             @endforeach
                         <button type="submit">Фильтровать</button>
                     </form>

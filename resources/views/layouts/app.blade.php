@@ -70,7 +70,6 @@
                                 <li class="dropdown "><a href="{{route('categoryAll')}}">Category</a>
                                     <ul class="dropdown-menu ">
                                         @foreach($setCategories as $category)
-
                                             <li><a href="{{route('category',$category->id)}}">{{$category->title}}</a>
                                             </li>
                                         @endforeach
@@ -81,7 +80,11 @@
                                 @if(auth()->check())
                                     <li><a href="{{ route('logout')}}">Logout</a></li>
                                     <li><a href="{{ route('profile')}}">Profile</a></li>
-                                    <li><a href="{{ route('admin.dashboard')}}">Admin</a></li>
+{{--                                    {{dd(Auth()->user()->permissions->is_admin)}}--}}
+                                    @if(auth()->user()->permissions->is_admin)
+                                        <li><a href="{{ route('admin.dashboard')}}">Admin</a></li>
+                                    @endif
+{{--                                    <li><a href="{{ route('admin.dashboard')}}">Admin</a></li>--}}
 {{--                                    {{dd(Auth::user()->is_admin)}}--}}
 {{--                                    @if(Auth::user()->is_adimin == 1)--}}
 {{--                                        <li><a href="{{ route('admin')}}">Admin</a></li>--}}

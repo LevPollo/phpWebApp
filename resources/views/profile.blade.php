@@ -8,7 +8,7 @@
     <section id="page-title" class="">
         <div class="container ">
             <div class="page-title">
-                <h1>{{Auth::user()->user_permission->is_admin}}</h1>
+                <h1>{{Auth::user()->permissions->is_admin}}</h1>
                 <h1>Profile</h1>
                 <span>Good day {{Auth::user()->name}}</span>
             </div>

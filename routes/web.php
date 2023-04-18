@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MyPlaceController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostCreateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
@@ -36,20 +37,17 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function (){
     Route::get("/dashboard",[AdminController::class,"dashboard"])->name("admin.dashboard");
     Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
 });
-//Route::middleware(["auth","admin"])->prefix("admin")->group(function (){
-//    Route::get("/dashboard",[AdminController::class,"dashboard"])->name("admin.dashboard");
-//    Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
-//});
+
 
 Route::get('/mail',[MailController::class,"sendMail"]);
 
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
 
-Route::get('/categoryall',  [MyPlaceController::class, 'categoryAll'])->name('categoryAll');
+Route::get('/categoryAll',  [MyPlaceController::class, 'categoryAll'])->name('categoryAll');
 Route::get('/category/{id?}',  [MyPlaceController::class, 'category'])->name('category');
 
-Route::get('/post{id}',[PostController::class,'post'])->name('post');
-Route::post('/post{id}',[PostController::class,'sendComment'])->middleware('auth');
+Route::get('/post/{id}',[PostController::class,'post'])->name('post');
+Route::post('/post/{id}',[PostController::class,'sendComment'])->middleware('auth');
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 Route::post('/contact',[MailController::class,"sendMail"]);
@@ -92,8 +90,8 @@ Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 Route::get('/profile/change',[ProfileController::class,'changeInfo'])->middleware('auth')->name('profile_change');
 Route::post('/profile/change',[ProfileController::class,'changeSave']);
 
-
-
+Route::get("/postCreate",[PostCreateController::class,"view"])->middleware(["auth","author"])->name("postCreate");
+Route::post("/postCreate",[PostCreateController::class,"store"])->middleware(["auth","author"]);
 
 
 

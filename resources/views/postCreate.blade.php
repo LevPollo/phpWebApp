@@ -7,7 +7,8 @@
                     <h6 class="card-subtitle text-muted">Default Bootstrap form layout.</h6>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route("postCreate")}}">
+
+                    <form method="POST" action="{{route("postCreate")}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label class="form-label">Title:</label>
@@ -19,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label w-100">File input</label>
-                            <input type="file">
+                            <input name="image" type="file" >
                             <small class="form-text text-muted">Example block-level help text here.</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -34,7 +34,7 @@ class PostController extends Controller
 
         ]);
 
-        return redirect(route("post",1));
+        return redirect(route("post",$id));
 
     }
 

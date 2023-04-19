@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('section')
     <section id="page-title">
         <div class="container">
@@ -11,7 +10,7 @@
                 <ul>
                     <li><a href="#">Home</a> </li>
                     <li><a href="#">Components</a> </li>
-                    <li class="active"><a href="#">Data Tables</a> </li>
+                    <li class="active"><a href="#">Data Tables</a></li>
                 </ul>
             </div>
         </div>

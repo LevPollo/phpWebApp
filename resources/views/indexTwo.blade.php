@@ -7,6 +7,7 @@
 
             <div  class="slide" style="background-image: url({{asset('images/backgrounds/mine.png')}}); background-size: cover; width: 100%; height: 100%">
             <div class="bg-overlay"></div>
+                <img src="storage/articles/author101/101_1681931997.jpg" alt="Girl in a jacket" width="500" height="600">
             <div class="container ">
                 <div class="slide-captions text-center  text-shadow-dark" >
                     <!-- Captions -->

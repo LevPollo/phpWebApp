@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostCreateController extends Controller
 {
@@ -14,6 +16,14 @@ class PostCreateController extends Controller
 
     public function store(Request $request)
     {
+        //Save image
+
+        $imageExtension = $request->image->getClientOriginalExtension();
+        $timestamp = Carbon::now()->timestamp;
+        $userId = auth()->user()->id;
+        $newImageName = $userId."_".$timestamp.".".$imageExtension;
+
+        Storage::putFileAs("public/articles/author".$userId,$request->image,$newImageName,);
 
 
         $newPost = News::create([
@@ -21,7 +31,7 @@ class PostCreateController extends Controller
             "category_id" => 1,
             "title" => $request->title,
             "text" => $request->text,
-            "image" => "/images/article_images/articleImg (19).jpg"
+            "image" => "/storage/articles/author".$userId."/".$newImageName,
         ]);
 
 

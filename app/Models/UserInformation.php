@@ -11,6 +11,18 @@ class UserInformation extends Model
 
     protected $fillable = [
         "user_id",
+        "first_name",
+        "last_name",
+        "birthdate",
+        "avatar",
+        "country",
+        "city",
+        "street",
+        "house_number",
+        "floor",
+        "apartment_number",
+        "index",
+
     ];
     public function user()
     {

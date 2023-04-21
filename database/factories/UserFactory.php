@@ -23,7 +23,6 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone'=> fake()->unique()->e164PhoneNumber(),
             'password' => Hash::make('testtest'), // password
-            'is_admin'=> false,
             'remember_token' => Str::random(10),
         ];
     }

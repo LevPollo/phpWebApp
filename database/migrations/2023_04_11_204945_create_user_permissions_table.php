@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_permissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id");
-            $table->boolean("is_admin");
-            $table->boolean("is_moderator");
-            $table->boolean("is_author");
-            $table->boolean("is_baned");
+            $table->unsignedBigInteger("user_id")->default(0);
+            $table->boolean("is_admin")->default(0);
+            $table->boolean("is_moderator")->default(0);
+            $table->boolean("is_author")->default(0);
+            $table->boolean("is_baned")->default(0);
             $table->timestamps();
 
             $table->foreign("user_id")

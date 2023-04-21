@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostCreateController extends Controller
 {
-    public function view()
+    public function index()
     {
         return view("postCreate");
     }

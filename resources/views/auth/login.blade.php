@@ -30,8 +30,14 @@
                                     <button class="btn " type="submit">login </button>
                                     <a href="{{route('register')}}" type="button" class="btn btn-danger m-l-10">Register</a>
                                 </div>
+                                <div class="col-lg-12 p-1 form-group">
+                                    <a href="{{route("google.login")}}" class="btn btn-danger w-100">
+                                        Login with Gmail <i class="fab fa-google"></i>
+                                    </a>
+                                </div>
 
-                            <ul class="mx-auto">
+
+                                <ul class="mx-auto">
                                 @foreach( $errors->all() as $error )
                                     <li>{{ $error }}</li>
                                 @endforeach

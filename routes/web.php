@@ -38,7 +38,6 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function (){
     Route::post("/dashboard",[AdminController::class,"delete"])->name("admin.dashboard.delete");
 });
 
-
 Route::get('/mail',[MailController::class,"sendMail"]);
 
 Route::get('/', [MyPlaceController::class,'main'])->name('main');
@@ -97,6 +96,10 @@ Route::post("/postCreate",[PostCreateController::class,"store"])->middleware(["a
 
 Route::get('/google/auth/redirect', [Controllers\GoogleController::class,"redirectToGoogle"])->name('google.login');
 Route::get('/google/auth/callback', [Controllers\GoogleController::class,"handleGoogleCallback"]);
+
+Route::get("/payment",[Controllers\StripeController::class,"index"])->name("payment");
+Route::post("/pay_checkout",[Controllers\StripeController::class,"checkout"])->name("pay.checkout");
+Route::get("/pay_success",[Controllers\StripeController::class,"success"])->name("pay.success");
 
 
 

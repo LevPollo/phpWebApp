@@ -65,6 +65,7 @@
                     <div class="container ">
                         <nav>
                             <ul>
+                                <li><a href="{{route('payment')}}">Payment</a></li>
                                 <li><a href="{{route('main')}}">Home</a></li>
 
                                 <li class="dropdown "><a href="{{route('categoryAll')}}">Category</a>

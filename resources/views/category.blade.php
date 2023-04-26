@@ -14,9 +14,8 @@
             <!-- Blog -->
             <div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
                 <!-- Post item-->
-
+                    dd($id)
                 @foreach($news as $post)
-
                     @if($post->category_id == $categoryId && $categoryId != null )
                         <div class="post-item border ">
                             <div class="post-item-wrap">
@@ -31,7 +30,7 @@
                                     <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
                                     <h2><a href="#">{{$post->title}}</a></h2>
                                     <div class="post-author"> <img src="https://play-lh.googleusercontent.com/r1gNUI2MyuVY4U_ImvN_VUn9aKaZpCbkU4eYyXxaoygZ1gr1v9Pd-nGcC5RKzVvVrA">
-                                        <p>by <a href="#">{{$post->user->name}}</a> 2 days ago </p>
+                                        <p>by <a href="{{route("author.page",$post->user->id)}}">{{$post->user->name}}</a> 2 days ago </p>
 
                                     </div>
                                     <br>
@@ -46,8 +45,6 @@
                         </div>
 
                     @endif
-
-
                 @endforeach
                 <!-- end: Post item-->
             </div>

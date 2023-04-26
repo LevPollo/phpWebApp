@@ -25,15 +25,12 @@
                     <!-- Mini gallery-->
                     <div class="widget widget-gallery p-cb ">
                         <h4 class="widget-title">My Posts</h4>
-{{--                        {{dd(Auth::user()->news)}}--}}
                         <div data-lightbox="gallery">
-                            @foreach(Auth::user()->posts as $post)
-
-                                <a href="{{route('post',$post->id)}}" >
-                                    <img alt="image" src="{{asset($post->image)}}">
-                                </a>
-                            @endforeach
-
+                                @foreach(Auth::user()->news as  $post)
+                                    <a href="{{route('post',$post->id)}}" >
+                                        <img alt="image" src="{{asset($post->image)}}">
+                                    </a>
+                                @endforeach
 
                         </div>
                     </div>

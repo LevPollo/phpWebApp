@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthorPageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
@@ -88,6 +89,9 @@ Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
 Route::get('/profile/change',[ProfileController::class,'changeInfo'])->middleware('auth')->name('profile_change');
 Route::post('/profile/change',[ProfileController::class,'changeSave']);
+
+Route::get("/author/{id}",[AuthorPageController::class,"index"])->name("author.page");
+Route::post("/author/sub/{id}",[AuthorPageController::class,"store"]);
 
 Route::get("/postCreate",[PostCreateController::class,"index"])->middleware(["auth","author"])->name("postCreate");
 Route::post("/postCreate",[PostCreateController::class,"store"])->middleware(["auth","author"]);

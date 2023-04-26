@@ -27,16 +27,9 @@ class ProfileController extends Controller
 
     public function changeSave(changeProfile $request)
     {
-//        $validated = $request->validated();
 
         $userInformation = Auth::user()->information;
         $user = Auth::user();
-
-//        $user->name = $validated['name'];
-//        $user->password = Hash::make($validated['password']);
-//        $user->phone = $validated['phone'];
-//        $user->email = $validated['email'];
-//        $user->save();
 
         $userInformation->first_name = $request->firstname;
         $userInformation->last_name = $request->lastname;

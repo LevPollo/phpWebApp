@@ -45,7 +45,7 @@
                                     <div class="post-author "><img class="img-fluid"
                                                                    src="{{$post->user->information->avatar}}">
 
-                                        <p>by <a href="#">{{$post->user->name}}</a> 2 days ago </p>
+                                        <p>by <a href="{{route("author.page",$post->user->id)}}">{{$post->user->name}}</a> 2 days ago </p>
                                     </div>
                                     <br>
                                     <div class="post-tags ">
@@ -63,7 +63,6 @@
             <!-- end: Blog -->
             <!-- Pagination -->
             <div>{{$news->links()}}</div>
-
             <!-- end: Pagination -->
         </div>
         <!-- end: post content -->

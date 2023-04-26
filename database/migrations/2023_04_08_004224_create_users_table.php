@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("phone",20)->nullable();
             $table->string("email");
-            $table->string("password");
+            $table->string("password")->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
@@ -30,5 +30,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+    }
+
+    public function before()
+    {
+        $this->before("2019_05_03_000003_create_subscription_items_table");
+        $this->before();
     }
 };

@@ -92,6 +92,7 @@ Route::post('/profile/change',[ProfileController::class,'changeSave']);
 
 Route::get("/author/{id}",[AuthorPageController::class,"index"])->name("author.page");
 Route::post("/author/sub/{id}",[AuthorPageController::class,"store"]);
+Route::post("/author/donation_sub/{id}",[AuthorPageController::class,"donationStore"]);
 
 Route::get("/postCreate",[PostCreateController::class,"index"])->middleware(["auth","author"])->name("postCreate");
 Route::post("/postCreate",[PostCreateController::class,"store"])->middleware(["auth","author"]);

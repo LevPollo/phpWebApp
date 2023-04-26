@@ -18,19 +18,35 @@
                                 {{$author->name}}
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">About Author</h5>
-                                <p class="card-text">Some text.</p>
-                                <input type="hidden" name="author_id" value="{{$author->id}}">
+                                <form class="row" method="POST" action="/author/sub/{{$author->id}}">
+                                    @csrf
+                                    <h5 class="card-title">About Author</h5>
+                                    <p class="card-text">Some text.</p>
+                                    <input type="hidden" name="author_id" value="{{$author->id}}">
 
-                                @if(Auth::user()->subscriptions->where("author_id",$author->id)->value("author_id") == false)
-                                    <input type="hidden" name="status" value="true">
-                                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                                @else
-                                    <input type="hidden" name="status" value="false">
-                                    <button type="submit" class="btn btn-primary">Unfollow</button>
-                                @endif
+                                    @if(Auth::user()->subscriptions->where("author_id",$author->id)->value("author_id") == false)
+                                        <input type="hidden" name="status" value="true">
+                                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                                    @else
+                                        <input type="hidden" name="status" value="false">
+                                        <button type="submit" class="btn btn-primary">Unfollow</button>
+                                    @endif
+                                </form>
                             </div>
+                            <div class="card-body">
+                                <form class="align-content-center" method="POST" action="/author/donation_sub/{{$author->id}}">
+                                    @csrf
+                                    <input type="hidden" name="author_id" value="{{$author->id}}">
+                                    @if(Auth::user()->donationSub->where("author_id",$author->id)->value("author_id") == false)
+                                        <input type="hidden" name="status" value="true">
+                                        <button type="submit" class="btn btn-primary ">Donation subscribe $</button>
+                                    @else
+                                        <input type="hidden" name="status" value="false">
+                                        <button type="submit" class="btn btn-primary">Donation unfollow</button>
+                                    @endif
+                                </form>
 
+                            </div>
                         </div>
                     </div>
                 </form>

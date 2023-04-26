@@ -64,5 +64,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserSubscriptions::class);
     }
 
+    public function donationSub()
+    {
+        return $this->hasMany(UserDonationSubscriptions::class);
+    }
+
 
 }
